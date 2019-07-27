@@ -225,11 +225,11 @@ func (tv *TestView) UnmarshalJSON(b []byte) error {
 
 // TestStep is struct with information of one particular test "run"
 type TestStep struct {
-	URL    string `json:"URL"`
-	Run    int    `json:"run"`
-	Date   int    `json:"date"`   // 1479973600
-	Error  string `json:"error"`  // Timed out waiting for the browser to start.
-	Result int    `json:"result"` // 99999
+	URL    string  `json:"URL"`
+	Run    int     `json:"run"`
+	Date   float64 `json:"date"`   // 1479973600
+	Error  string  `json:"error"`  // Timed out waiting for the browser to start.
+	Result int     `json:"result"` // 99999
 
 	Tester         string `json:"tester"`
 	BrowserName    string `json:"browser_name"`    // "Google Chrome"
@@ -248,8 +248,8 @@ type TestStep struct {
 	// Time to DOM Loading - From Navigation Timing
 	DOMLoading int `json:"domLoading"`
 	// Browser-reported first paint time (IE-specific right now - window.performance.timing.msFirstPaint)
-	FirstPaint           int `json:"firstPaint"`
-	FirstMeaningfulPaint int `json:"chromeUserTiming.firstMeaningfulPaint"`
+	FirstPaint           float64 `json:"firstPaint"`
+	FirstMeaningfulPaint int     `json:"chromeUserTiming.firstMeaningfulPaint"`
 	// Time from the start of the operation until the title first changed (in ms)
 	TitleTime int `json:"titleTime"`
 	// Time to DOM Interactive - From Navigation Timing
@@ -293,8 +293,8 @@ type TestStep struct {
 	CPUTimes    map[string]int `json:"cpuTimes"`
 	CPUTimesDoc map[string]int `json:"cpuTimesDoc"`
 
-	DocCPUpct         int `json:"docCPUpct"`         // 39
-	FullyLoadedCPUpct int `json:"fullyLoadedCPUpct"` // 19,
+	DocCPUpct         int     `json:"docCPUpct"`         // 39
+	FullyLoadedCPUpct float64 `json:"fullyLoadedCPUpct"` // 19,
 
 	// The number of bytes downloaded before the Document Complete time
 	BytesIn         int `json:"bytesIn"`
@@ -359,9 +359,15 @@ type TestStep struct {
 	TimeToInteractive int `json:"TTIMeasurementEnd"` // 11846
 	LastInteractive   int `json:"LastInteractive"`   // 9571
 
-	Pages       Pages                `json:"pages"`
-	Thumbnails  Thumbnails           `json:"thumbnails"`
-	Images      Images               `json:"images"`
+	Pages        Pages      `json:"pages"`
+	Thumbnails   Thumbnails `json:"thumbnails"`
+	ImagesString string     `json:"Images"`
+	Images       struct {
+		Waterfall      string `json:"waterfall"`
+		ConnectionView string `json:"connectionView"`
+		Checklist      string `json:"checklist"`
+		ScreenShot     string `json:"screenShot"`
+	} `json:"images"`
 	RawData     RawData              `json:"rawData"`
 	VideoFrames []VideoFrame         `json:"videoFrames"`
 	Breakdown   map[string]Breakdown `json:"breakdown"`
