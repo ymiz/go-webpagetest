@@ -404,7 +404,8 @@ type ResultData struct {
 	SuccessfulFVRuns int    `json:"successfulFVRuns"`
 	SuccessfulRVRuns int    `json:"successfulRVRuns"`
 
-	Runs map[string]TestRun `json:"runs"`
+	Runs   map[string]TestRun `json:"runs"`
+	Median TestRun            `json:"median"`
 }
 
 // GetMedianRun will calculate and return median run by given metric and step
