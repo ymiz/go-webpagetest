@@ -85,17 +85,22 @@ Options:
 	// }
 	// fmt.Printf("Result: %#v", result)
 
-	// result, err := wpt.RunTestAndWait(webpagetest.TestSettings{
-	// 	URL:          "http://ngs.ru",
-	// 	Location:     "74RU_wpt:Chrome",
-	// 	Runs:         3,
-	// 	ScreenWidth:  1280,
-	// 	ScreenHeight: 720,
-	// })
-	// if err != nil {
-	// 	fmt.Printf("Error: %v", err)
-	// 	os.Exit(2)
-	// }
+	//result, err := wpt.RunTestAndWait(webpagetest.TestSettings{
+	//	URL:          "https://live2.nicovideo.jp/watch/lv322863861",
+	//	APIKey:       "A.22c9bb33d9efb925b09f59a9c325d8be",
+	//	Location:     "ec2-ap-northeast-1:Chrome",
+	//	Runs:         1,
+	//	ScreenWidth:  1280,
+	//	ScreenHeight: 720,
+	//	Lighthouse:   1,
+	//}, func(testID, status string, duration int) {
+	//	log.Println("[]", testID, status, duration)
+	//}, )
+	//if err != nil {
+	//	fmt.Printf("Error: %v", err)
+	//	os.Exit(2)
+	//}
+	//log.Println(result.Summary)
 }
 
 // Get Locations

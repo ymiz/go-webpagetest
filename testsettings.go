@@ -111,7 +111,8 @@ type TestSettings struct {
 	// %RUN% - Replaces with the current run number
 	// %CACHED% - Replaces with 1 for repeat view tests and 0 for initial view
 	// %VERSION% - Replaces with the current wptdriver version number
-	AppendUA string `json:",omitempty"`
+	AppendUA   string `json:",omitempty"`
+	Lighthouse int    `json:"lighthouse,omitempty"`
 }
 
 // GetFormParams returns settings that was set ready to be passed to POST
@@ -224,6 +225,9 @@ func (s TestSettings) GetFormParams() url.Values {
 	}
 	if s.DPR > 0 {
 		values.Add("dpr", fmt.Sprintf("%d", s.DPR))
+	}
+	if s.Lighthouse > 0 {
+		values.Add("lighthouse", "1")
 	}
 
 	return values
